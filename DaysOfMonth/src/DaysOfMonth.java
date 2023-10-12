@@ -3,7 +3,7 @@ public class DaysOfMonth {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		// TODO Auto-generated method stub
+
 		String A[] = {"January", "March", "May", "July", "August", "November", "December", "Jan.", "Mar."
 					, "Aug.", "Oct.", "Dec.", "Jan", "Mar", "Jul", "Aug", "Oct", "Dec", "1", "3", "5", "7", "8"
 					, "10", "12"};
