@@ -1,0 +1,9 @@
+
+public class Cart {
+	public static final int Max_Number_Ordered = 20;
+	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[Max_Number_Ordered];
+	public Cart() {
+		super();
+	}
+
+}
