@@ -10,6 +10,10 @@ public class DigitalVideoDisc {
 		return title;
 	}
 	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public String getCategory() {
 		return category;
 	}
@@ -25,6 +29,15 @@ public class DigitalVideoDisc {
 	public float getCost() {
 		return cost;
 	}
+	
+	public DigitalVideoDisc() {
+		title = "";
+		category = "";
+		director = "";
+		length = 0;
+		cost = 0;
+	}
+	
 	
 	public DigitalVideoDisc(String title) {
 		super();
@@ -53,5 +66,9 @@ public class DigitalVideoDisc {
 		this.director = director;
 		this.length = length;
 		this.cost = cost;
+	}
+	
+	public void show() {
+		System.out.println(title + "\t\t" + cost);
 	}
 }

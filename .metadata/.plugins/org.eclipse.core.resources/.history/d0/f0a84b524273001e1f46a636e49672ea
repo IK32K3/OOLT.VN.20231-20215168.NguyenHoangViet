@@ -1,0 +1,26 @@
+import java.util.*;
+
+
+public class Cart {
+	public static final int Max_Number_Ordered = 20;
+	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[Max_Number_Ordered];
+	public Cart() {
+		super();
+	}
+	List<DigitalVideoDisc> list = new ArrayList<>(Arrays.asList(itemsOrdered));
+	
+	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
+		if (itemsOrdered.length < Max_Number_Ordered){ 
+			list.add(disc);
+			itemsOrdered = list.toArray(new DigitalVideoDisc[0]);
+			System.out.println("The disc has been added.");
+		}
+		else System.out.println("The cart is full.");
+	}
+	
+	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
+		 list.remove(disc);
+		 itemsOrdered = list.toArray(new DigitalVideoDisc[0]);
+		 System.out.println("The disc has been removed.");
+	}
+}
