@@ -20,10 +20,6 @@ public class Track implements Playable{
 		this.length = length;
 	}
 
-	public Track() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public void play() {
 		System.out.println("Playing track: " + this.getTitle());
 		System.out.println("track length: " + this.getLength());

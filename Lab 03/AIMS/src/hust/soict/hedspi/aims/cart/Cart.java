@@ -2,17 +2,14 @@ package hust.soict.hedspi.aims.cart;
 import java.util.*;
 
 import hust.soict.hedspi.aims.media.Media;
-import hust.soict.hedspi.aims.media.MediaComparatorByCostTitle;
-import hust.soict.hedspi.aims.media.MediaComparatorByTitleCost;
-
 public class Cart {
-	private List<Media> list = new ArrayList<Media>();
+	private ArrayList<Media> list = new ArrayList<Media>();
 	
 	public Cart() {
 		super();
 	}
 	
-	public List<Media> getList() {
+	public ArrayList<Media> getList() {
 		return list;
 	}
 
@@ -32,20 +29,30 @@ public class Cart {
 		return false;
 	}
 	
+	public Media search(int id) {
+		return list.get(id);
+	}
+	
+	public Media search(String title) {
+		for(Media m: list) if(m.getTitle().equals(title)) return m;
+		return null;
+	}
+	
 	public void show() {
-		List<Media> temp = list;
-		System.out.println("Book:");
-		for(Media m: temp) if(m.getType() == "Book") {
-			 System.out.println(m.getTitle());
-			 temp.remove(m);
+		for(Media m: list) System.out.println(m.getTitle() + " - " + m.getType());
+	}
+	
+	public void print() {
+
+		System.out.println("=============CART=============");
+		if (list.size() == 0) {
+			System.out.println("Cart is empty!");
 		}
-		System.out.println("CD");
-		for(Media m: temp) if(m.getType() == "CD") {
-			System.out.println(m.getTitle());
-			temp.remove(m);
-		}
-		System.out.println("DVD");
-		for(Media m: temp) System.out.println(m.getTitle());
+			
+		for (Media m : list) System.out.println(m);
+	
+		System.out.printf("Total cost: %f\n", totalCost());
+		System.out.println("==============================");
 	}
 	
 	public float totalCost() {
@@ -54,15 +61,10 @@ public class Cart {
 		return sum;
 	}
 	
-	public void TitleCost() {
-		Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-		Collections.sort(list, COMPARE_BY_TITLE_COST);
+	public void clear() {
+		list = new ArrayList<Media>();
 	}
 	
-	public void CostTitle() {
-		Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
-		Collections.sort(list, COMPARE_BY_COST_TITLE);
-	}
 }
 
 

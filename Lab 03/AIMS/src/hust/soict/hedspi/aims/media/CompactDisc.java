@@ -3,16 +3,13 @@ import java.util.*;
 
 public class CompactDisc extends Disc implements Playable {
 	private String artist;
-	private List<Track> tracks = new ArrayList<Track>();
-	public CompactDisc() {
-		// TODO Auto-generated constructor stub
-		super.setType("CD");
-	}
+	private ArrayList<Track> tracks = new ArrayList<Track>();
+
 	public String getArtist() {
 		return artist;
 	}
 	public CompactDisc(int id, String title, String category, int length, float cost, String artist,
-			List<Track> tracks) {
+			ArrayList<Track> tracks) {
 		super(id, title, category, length, cost);
 		this.artist = artist;
 		this.tracks = tracks;
