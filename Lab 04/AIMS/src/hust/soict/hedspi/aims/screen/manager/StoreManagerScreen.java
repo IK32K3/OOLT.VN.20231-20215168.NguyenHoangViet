@@ -1,6 +1,10 @@
 package hust.soict.hedspi.aims.screen.manager;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
 import java.util.*;
 import hust.soict.hedspi.aims.*;
 import hust.soict.hedspi.aims.cart.Cart;
@@ -26,9 +30,20 @@ public class StoreManagerScreen extends JFrame{
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 		JMenu smUpdateStore = new JMenu("Update store");
-		smUpdateStore.add(new JMenuItem("Add Book"));
-		smUpdateStore.add(new JMenuItem("Add CD"));
-		smUpdateStore.add(new JMenuItem("Add DVD"));
+		JMenuItem BookMenuItem = new JMenuItem("Add Book");
+		smUpdateStore.add(BookMenuItem);
+
+		JMenuItem CDMenuItem = new JMenuItem("Add CD");
+		smUpdateStore.add(CDMenuItem);
+		
+		JMenuItem DVDMenuItem = new JMenuItem("Add DVD");
+	
+		smUpdateStore.add(DVDMenuItem);
+		
+		MenuItemListener menuItemListener = new MenuItemListener();
+		BookMenuItem.addActionListener(menuItemListener);
+		CDMenuItem.addActionListener(menuItemListener);
+		DVDMenuItem.addActionListener(menuItemListener);
 		
 		menu.add(smUpdateStore);
 		menu.add(new JMenuItem("View Store"));
@@ -41,6 +56,8 @@ public class StoreManagerScreen extends JFrame{
 		return menuBar;
 	}
 	
+	
+
 	JPanel createHeader() {
 		JPanel header = new JPanel();
 		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
@@ -125,8 +142,39 @@ public class StoreManagerScreen extends JFrame{
 	}
 	
 	public static void main(String[] agrs) {
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc( 12, "Nguyen", "Action", 90, 6 , "Viet");
-		
+		DigitalVideoDisc dvd1 = new DigitalVideoDisc("Harry Potter and the Philosopher's stone", 3f);
+		Store.all.addMedia(dvd1);
+		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Harry Potter and the Chamber of Secrets", 3.5f);
+		Store.all.addMedia(dvd2);
+		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Harry Potter and the Prisoner of Azkaban", 5f);
+		Store.all.addMedia(dvd3);
+		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Harry Potter and the Goblet of Fire", 4.5f);
+		Store.all.addMedia(dvd4);
+		Track track1 = new Track("Hello", 180);
+		Track track2 = new Track("Hi", 240);
+		Track track3 = new Track("Fetch the Bolt Cutters", 210);
+		CompactDisc cd1 = new CompactDisc("Fetch the Bolt Cutters", 10.39f);
+		cd1.addTrack(track3);
+		Store.all.addMedia(cd1);
+		CompactDisc cd2 = new CompactDisc("Future Nostalgia", 9.6f);
+		cd2.addTrack(track1);
+		cd2.addTrack(track2);
+		Store.all.addMedia(cd2);
+		Book b1 = new Book("The Hunger Games", 5.5f);
+		Store.all.addMedia(b1);
+		Book b2 = new Book("Catching Fire", 4.9f);
+		Store.all.addMedia(b2);
+		Book b3 = new Book("Mocking Jay", 5.1f);
+		Store.all.addMedia(b3);
 		new StoreManagerScreen(Store.all);
 	}
+	
+	 class MenuItemListener implements ActionListener {
+	        public void actionPerformed(ActionEvent e) {
+	            String cmd = e.getActionCommand();
+	            if(cmd.equals("Add Book")) new AddBookToStoreScreen();
+	            else if(cmd.equals("Add CD")) new AddCDToStoreScreen();
+	            else new AddDVDToStoreScreen();
+	        }
+	 }
 }
