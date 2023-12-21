@@ -1,0 +1,2 @@
+INDEX VERSION 1.132+C:\Users\Huynh\Documents\GitHub\OOLT.VN.20231-20215168.NguyenHoangViet\Lab 02\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
